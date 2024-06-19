@@ -4,38 +4,30 @@ import { IQueryParams } from "../../interfaces/query-params.interface";
 import {MysqlQuery} from "../../concrete-products/query/mysql-query"
 
 export class QueryMysqlFactory implements IQueryAbstractFactory {
-    create(params: IQueryParams): IQueryDB {
-        const mongodb = new MysqlQuery()
-        mongodb.create(params)
+    database: IQueryDB
 
-        return mongodb
+    constructor() {
+        this.database =  new MysqlQuery()
+    }
+
+    create(params: IQueryParams): IQueryDB {
+        return this.database.create(params)
+
     }
 
     delete(params: IQueryParams): IQueryDB {
-        const mongodb = new MysqlQuery()
-        mongodb.delete(params)
-
-        return mongodb
+        return this.database.delete(params)
     }
 
     findMany(params: IQueryParams): IQueryDB {
-        const mongodb = new MysqlQuery()
-        mongodb.findMany(params)
-
-        return mongodb
+        return this.database.findMany(params)
     }
 
     findOne(params: IQueryParams): IQueryDB {
-        const mongodb = new MysqlQuery()
-        mongodb.findOne(params)
-
-        return mongodb
+       return this.database.findOne(params)
     }
 
     update(params: IQueryParams): IQueryDB {
-        const mongodb = new MysqlQuery()
-        mongodb.update(params)
-
-        return mongodb
+        return this.database.update(params)
     }
 }

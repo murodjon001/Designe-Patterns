@@ -4,38 +4,30 @@ import { IQueryParams } from "../../interfaces/query-params.interface";
 import {PostgresqlQuery} from "../../concrete-products/query/postgres-query"
 
 export class QueryPostgresqlFactory implements IQueryAbstractFactory {
-    create(params: IQueryParams): IQueryDB {
-        const mongodb = new PostgresqlQuery()
-        mongodb.create(params)
+    database: IQueryDB
 
-        return mongodb
+    constructor() {
+        this.database =  new PostgresqlQuery()
+    }
+
+    create(params: IQueryParams): IQueryDB {
+        return this.database.create(params)
+
     }
 
     delete(params: IQueryParams): IQueryDB {
-        const mongodb = new PostgresqlQuery()
-        mongodb.delete(params)
-
-        return mongodb
+        return this.database.delete(params)
     }
 
     findMany(params: IQueryParams): IQueryDB {
-        const mongodb = new PostgresqlQuery()
-        mongodb.findMany(params)
-
-        return mongodb
+        return this.database.findMany(params)
     }
 
     findOne(params: IQueryParams): IQueryDB {
-        const mongodb = new PostgresqlQuery()
-        mongodb.findOne(params)
-
-        return mongodb
+       return this.database.findOne(params)
     }
 
     update(params: IQueryParams): IQueryDB {
-        const mongodb = new PostgresqlQuery()
-        mongodb.update(params)
-
-        return mongodb
+        return this.database.update(params)
     }
 }
