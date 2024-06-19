@@ -11,7 +11,7 @@ import { QueryModngodbFactory } from "../concrete-factories/query-factories/mong
 import { QueryMysqlFactory } from "../concrete-factories/query-factories/mysql-query";
 
 //=========================Entity=======================//
-export class ConncetionDB {
+export class ConncetAndQueryEntity {
     firstDataBase: IConnectionDB
     database: DatabaseEnum
     query: IQueryDB
@@ -141,7 +141,7 @@ export class ConncetionDB {
 
 
 // ============================ Client========================================//
-const query = new ConncetionDB(DatabaseEnum.PostgreSQL, {
+const query = new ConncetAndQueryEntity(DatabaseEnum.PostgreSQL, {
     database: "test",
     password: "test",
     port: 1234,
